@@ -1,4 +1,4 @@
-package br.com.luizalabs.order_file_converter
+package br.com.luizalabs.orderfileconverter
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

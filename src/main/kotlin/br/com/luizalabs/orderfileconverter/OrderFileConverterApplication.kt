@@ -1,4 +1,4 @@
-package br.com.luizalabs.order_file_converter
+package br.com.luizalabs.orderfileconverter
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
