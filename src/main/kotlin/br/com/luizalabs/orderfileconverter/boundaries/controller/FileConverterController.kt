@@ -1,5 +1,6 @@
 package br.com.luizalabs.orderfileconverter.boundaries.controller
 
+import br.com.luizalabs.orderfileconverter.application.usecases.OrderFileConverterUseCase
 import br.com.luizalabs.orderfileconverter.boundaries.mapper.OrderMapper
 import br.com.luizalabs.orderfileconverter.boundaries.response.OrderConverterResponse
 import br.com.luizalabs.orderfileconverter.domain.Order
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
 import java.io.BufferedReader
+import java.io.File
 import java.io.InputStreamReader
 import java.math.BigDecimal
 import java.security.MessageDigest
@@ -23,30 +25,18 @@ import kotlin.collections.ArrayList
 class FileConverterController {
 
     @Autowired
-    lateinit var mapper: OrderMapper
+    lateinit var orderMapper: OrderMapper
+
+    @Autowired
+    lateinit var orderFileConverterUseCase: OrderFileConverterUseCase
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     fun orderConvert(@RequestParam("file") file: MultipartFile): ResponseEntity<ArrayList<OrderConverterResponse>> {
 //        val fileHash = generateSHA256Hash(file)
 
-        val reader = BufferedReader(InputStreamReader(file.inputStream))
-        val ordersGrouped = mutableMapOf<Int, MutableList<Order>>()
-
-        reader.forEachLine { line ->
-            val order = Order(
-                line.substring(0, 10).trim().toInt(),
-                line.substring(10, 55).trim(),
-                line.substring(55, 65).trim().toInt(),
-                line.substring(65, 75).trim().toInt(),
-                BigDecimal(line.substring(75, 87).trim()),
-                SimpleDateFormat("yyyyMMdd").parse(line.substring(87, 95).trim())
-            )
-            ordersGrouped.getOrPut(order.user) { mutableListOf() }.add(order)
-        }
-        reader.close()
-
-        val orderConverterResponses = mapper.toOrderConverterResponses(ordersGrouped)
+        val ordersGrouped = orderFileConverterUseCase(file)
+        val orderConverterResponses = orderMapper.toOrderConverterResponses(ordersGrouped)
         orderConverterResponses.sortBy { it.userId }
 
         return ResponseEntity(orderConverterResponses, HttpStatus.OK)
