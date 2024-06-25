@@ -5,7 +5,6 @@ import br.com.luizalabs.orderfileconverter.boundaries.response.OrderConverterRes
 import br.com.luizalabs.orderfileconverter.domain.Order
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.http.HttpStatusCode
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -19,7 +18,6 @@ import java.security.MessageDigest
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.collections.List
 
 @RestController
 class FileConverterController {
