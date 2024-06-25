@@ -49,6 +49,7 @@ class FileConverterController {
         reader.close()
 
         val orderConverterResponses = mapper.toOrderConverterResponses(ordersGrouped)
+        orderConverterResponses.sortBy { it.userId }
 
         return ResponseEntity(orderConverterResponses, HttpStatus.OK)
     }
