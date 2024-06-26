@@ -16,7 +16,10 @@ class OrderFileConverterUseCase {
 
         val input = orderFile.inputStream.reader()
 
-        return convertOrderFileLineToOrderService(input)
+        val ordersGrouped = convertOrderFileLineToOrderService(input)
+
+
+        return ordersGrouped
 
     }
 }

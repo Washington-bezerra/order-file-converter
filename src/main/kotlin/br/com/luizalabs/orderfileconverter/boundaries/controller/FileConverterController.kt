@@ -30,7 +30,9 @@ class FileConverterController {
 
     @PostMapping("/order-file")
     @ResponseStatus(HttpStatus.OK)
-    fun orderConvert(@RequestParam("file") file: MultipartFile): ResponseEntity<ArrayList<OrderConverterResponse>> {
+    fun orderConvert(
+        @RequestParam("file") file: MultipartFile
+    ): ResponseEntity<ArrayList<OrderConverterResponse>> {
 //        val fileHash = generateSHA256Hash(file)
 
         val ordersGrouped = orderFileConverterUseCase(file)

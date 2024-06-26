@@ -1,0 +1,1 @@
+ALTER TABLE order_file_log RENAME COLUMN status TO converion_status;
