@@ -7,10 +7,7 @@ import br.com.luizalabs.orderfileconverter.domain.Order
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.ResponseStatus
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
 import java.io.BufferedReader
 import java.io.File
@@ -22,6 +19,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 @RestController
+@RequestMapping("/v1/convert")
 class FileConverterController {
 
     @Autowired
@@ -30,7 +28,7 @@ class FileConverterController {
     @Autowired
     lateinit var orderFileConverterUseCase: OrderFileConverterUseCase
 
-    @PostMapping
+    @PostMapping("/order-file")
     @ResponseStatus(HttpStatus.OK)
     fun orderConvert(@RequestParam("file") file: MultipartFile): ResponseEntity<ArrayList<OrderConverterResponse>> {
 //        val fileHash = generateSHA256Hash(file)
