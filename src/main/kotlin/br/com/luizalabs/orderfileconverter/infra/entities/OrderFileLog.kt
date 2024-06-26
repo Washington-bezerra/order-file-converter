@@ -1,9 +1,8 @@
 package br.com.luizalabs.orderfileconverter.infra.entities
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
-import jakarta.persistence.Table
+import br.com.luizalabs.orderfileconverter.domain.ConversionStatus
+import br.com.luizalabs.orderfileconverter.domain.FileType
+import jakarta.persistence.*
 import org.hibernate.annotations.CreationTimestamp
 import java.time.LocalDateTime
 import java.util.UUID
@@ -22,10 +21,12 @@ data class OrderFileLog(
     val fileHash: String,
 
     @Column(name = "file_type")
-    val fileType: String,
+    @Enumerated(EnumType.STRING)
+    val fileType: FileType,
 
-    @Column
-    val status: String,
+    @Column(name = "conversion_status")
+    @Enumerated(EnumType.STRING)
+    val conversionStatus: ConversionStatus,
 ){
     @CreationTimestamp
     @Column(name = "created_at")

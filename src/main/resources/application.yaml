@@ -4,3 +4,14 @@ server:
 spring:
   application:
     name: order-file-converter
+  datasource:
+    url: jdbc:postgresql://localhost:5432/order-file-converter
+    username: admin
+    password: admin
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
