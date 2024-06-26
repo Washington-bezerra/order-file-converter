@@ -26,7 +26,7 @@ class ConvertOrderFileLineToOrderService {
                 line.substring(55, 65).trim().toInt(),
                 line.substring(65, 75).trim().toInt(),
                 BigDecimal(line.substring(75, 87).trim()),
-                SimpleDateFormat("yyyyMMdd").parse(line.substring(87, 95).trim())
+                SimpleDateFormat("yyyy-MM-dd").format(SimpleDateFormat("yyyyMMdd").parse(line.substring(87, 95).trim()))
             )
             ordersGrouped.getOrPut(order.user) { mutableListOf() }.add(order)
         }

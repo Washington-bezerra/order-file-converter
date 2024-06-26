@@ -9,5 +9,5 @@ data class Order(
     val orderId: Int,
     val productId: Int,
     val valor: BigDecimal,
-    val date: Date
+    val date: String
 )
