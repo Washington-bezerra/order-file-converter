@@ -48,7 +48,7 @@ class OrderFileConverterUseCase {
             val orderFileLog = OrderFileLog(
                 id = UUID.randomUUID(),
                 userName = userName,
-                fileHash = fileHash!!,
+                fileHash = fileHash?:"",
                 fileType = FileType.ORDER,
                 conversionStatus = conversionStatus,
             )
