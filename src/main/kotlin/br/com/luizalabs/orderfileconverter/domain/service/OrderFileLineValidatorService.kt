@@ -5,9 +5,11 @@ import org.springframework.stereotype.Service
 
 @Service
 class OrderFileLineValidatorService {
-    fun validate(line: String){
+    fun validate(line: String) : Boolean{
         if (line.length != 95){
             throw UnprocessableEntityException("The size of all rows must be 95")
         }
+
+        return true
     }
 }

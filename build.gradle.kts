@@ -32,6 +32,7 @@ dependencies {
 	runtimeOnly("org.postgresql:postgresql")
 	implementation("org.flywaydb:flyway-database-postgresql")
 	implementation("org.springframework.boot:spring-boot-starter-logging")
+	testImplementation("com.h2database:h2")
 }
 
 kotlin {
