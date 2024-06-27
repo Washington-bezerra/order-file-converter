@@ -1,4 +1,4 @@
-package br.com.luizalabs.orderfileconverter.boundaries.response
+package br.com.luizalabs.orderfileconverter.application.response
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.math.BigDecimal

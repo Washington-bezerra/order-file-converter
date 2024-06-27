@@ -1,8 +1,8 @@
-package br.com.luizalabs.orderfileconverter.boundaries.controller
+package br.com.luizalabs.orderfileconverter.application.controller
 
 import br.com.luizalabs.orderfileconverter.application.usecases.OrderFileConverterUseCase
 import br.com.luizalabs.orderfileconverter.boundaries.mapper.OrderMapper
-import br.com.luizalabs.orderfileconverter.boundaries.response.OrderConverterResponse
+import br.com.luizalabs.orderfileconverter.application.response.OrderConverterResponse
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
