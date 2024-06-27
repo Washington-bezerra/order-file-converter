@@ -1,7 +1,7 @@
 package br.com.luizalabs.orderfileconverter.infra.entities
 
-import br.com.luizalabs.orderfileconverter.domain.ConversionStatus
-import br.com.luizalabs.orderfileconverter.domain.FileType
+import br.com.luizalabs.orderfileconverter.domain.enums.ConversionStatus
+import br.com.luizalabs.orderfileconverter.domain.enums.FileType
 import jakarta.persistence.*
 import org.hibernate.annotations.CreationTimestamp
 import java.time.LocalDateTime

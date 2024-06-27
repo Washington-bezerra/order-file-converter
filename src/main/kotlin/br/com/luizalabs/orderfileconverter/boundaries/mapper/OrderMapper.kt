@@ -3,7 +3,7 @@ package br.com.luizalabs.orderfileconverter.boundaries.mapper
 import br.com.luizalabs.orderfileconverter.boundaries.response.OrderConverterResponse
 import br.com.luizalabs.orderfileconverter.boundaries.response.OrderResponse
 import br.com.luizalabs.orderfileconverter.boundaries.response.ProductResponse
-import br.com.luizalabs.orderfileconverter.domain.Order
+import br.com.luizalabs.orderfileconverter.domain.enums.Order
 import org.springframework.stereotype.Component
 
 @Component

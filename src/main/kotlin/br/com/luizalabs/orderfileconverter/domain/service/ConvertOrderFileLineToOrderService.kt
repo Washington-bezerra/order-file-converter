@@ -1,6 +1,6 @@
 package br.com.luizalabs.orderfileconverter.domain.service
 
-import br.com.luizalabs.orderfileconverter.domain.Order
+import br.com.luizalabs.orderfileconverter.domain.enums.Order
 import br.com.luizalabs.orderfileconverter.infra.exception.UnprocessableEntityException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service

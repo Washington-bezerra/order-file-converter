@@ -1,8 +1,8 @@
 package br.com.luizalabs.orderfileconverter.application.usecases
 
-import br.com.luizalabs.orderfileconverter.domain.ConversionStatus
-import br.com.luizalabs.orderfileconverter.domain.FileType
-import br.com.luizalabs.orderfileconverter.domain.Order
+import br.com.luizalabs.orderfileconverter.domain.enums.ConversionStatus
+import br.com.luizalabs.orderfileconverter.domain.enums.FileType
+import br.com.luizalabs.orderfileconverter.domain.enums.Order
 import br.com.luizalabs.orderfileconverter.domain.service.ConvertOrderFileLineToOrderService
 import br.com.luizalabs.orderfileconverter.domain.service.GenerateSHA256HashService
 import br.com.luizalabs.orderfileconverter.infra.entities.OrderFileLog

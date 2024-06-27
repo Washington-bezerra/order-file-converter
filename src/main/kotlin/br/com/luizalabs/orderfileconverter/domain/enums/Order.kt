@@ -1,4 +1,4 @@
-package br.com.luizalabs.orderfileconverter.domain
+package br.com.luizalabs.orderfileconverter.domain.enums
 
 import java.math.BigDecimal
 
