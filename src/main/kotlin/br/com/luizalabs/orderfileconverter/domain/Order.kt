@@ -1,7 +1,6 @@
 package br.com.luizalabs.orderfileconverter.domain
 
 import java.math.BigDecimal
-import java.util.Date
 
 data class Order(
     val user: Int,

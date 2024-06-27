@@ -17,9 +17,9 @@ class OrderMapper {
             val ordersGrouped = orders.groupBy { it.orderId }
             val orderResponse = ArrayList<OrderResponse>()
 
-            ordersGrouped.forEach{
+            ordersGrouped.forEach{ order ->
                 val products = ArrayList<ProductResponse>()
-                it.value.forEach {
+                order.value.forEach {
                     products.add(
                         ProductResponse(
                             it.productId,
@@ -30,9 +30,9 @@ class OrderMapper {
 
                 orderResponse.add(
                     OrderResponse(
-                        it.key,
-                        it.value.sumOf { it.valor },
-                        it.value.get(0).date,
+                        order.key,
+                        order.value.sumOf { it.valor },
+                        order.value[0].date,
                         products
                     )
                 )
@@ -41,7 +41,7 @@ class OrderMapper {
             orderConverterResponses.add(
                 OrderConverterResponse(
                     user,
-                    orders.get(0).name,
+                    orders[0].name,
                     orderResponse
                 )
             )
