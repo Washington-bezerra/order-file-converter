@@ -36,6 +36,7 @@ dependencies {
 	testImplementation("com.h2database:h2")
 	testImplementation("io.mockk:mockk:1.13.11")
 	testImplementation("com.h2database:h2")
+	implementation("org.hibernate.validator:hibernate-validator:6.2.0.Final")
 }
 
 kotlin {
