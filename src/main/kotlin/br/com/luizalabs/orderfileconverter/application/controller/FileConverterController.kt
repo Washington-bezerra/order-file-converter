@@ -28,7 +28,6 @@ class FileConverterController {
         @RequestHeader("userName") userName: String,
         @RequestParam("file") file: MultipartFile
     ): ResponseEntity<ArrayList<OrderConverterResponse>> {
-//        val fileHash = generateSHA256Hash(file)
 
         val ordersGrouped = orderFileConverterUseCase(file, userName)
         val orderConverterResponses = orderMapper.toOrderConverterResponses(ordersGrouped)
@@ -36,19 +35,4 @@ class FileConverterController {
 
         return ResponseEntity(orderConverterResponses, HttpStatus.OK)
     }
-
-    fun generateSHA256Hash(file: MultipartFile): String {
-        val messageDigest = MessageDigest.getInstance("SHA-256")
-        val buffer = ByteArray(8192)
-        var bytesRead: Int
-
-        file.inputStream.use { inputStream ->
-            while (inputStream.read(buffer).also { bytesRead = it } != -1) {
-                messageDigest.update(buffer, 0, bytesRead)
-            }
-        }
-
-        return Base64.getEncoder().encodeToString(messageDigest.digest())
-    }
-
 }
