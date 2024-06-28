@@ -34,6 +34,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-logging")
 	testImplementation("com.h2database:h2")
 	testImplementation("io.mockk:mockk:1.13.11")
+	testImplementation("com.h2database:h2")
 }
 
 kotlin {
