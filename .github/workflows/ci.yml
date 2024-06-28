@@ -55,7 +55,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: test-report
+          name: test-result
           path: build/reports/tests/test/
 
   test-report:
@@ -82,7 +82,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: test-report
-          path: build/reports/tests/test/
+          path: build/reports/jacoco/test/html/
 
 
   coverage:
@@ -103,13 +103,6 @@ jobs:
 
       - name: Test with Gradle
         run: ./gradlew jacocoTestCoverageVerification
-
-      - name: Archive test report
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-report
-          path: build/reports/tests/test/
 
   docker:
     needs: [ build, test ]
