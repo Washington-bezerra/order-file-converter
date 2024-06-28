@@ -11,7 +11,7 @@ import java.nio.file.Paths
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-@SpringBootTest
+@SpringBootTest(properties = ["spring.profiles.active=test"])
 @AutoConfigureMockMvc
 @TestPropertySource(locations = ["classpath:application-test.yml"])
 class FileConverterControllerTest {
