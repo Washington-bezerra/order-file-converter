@@ -1,23 +1,22 @@
 package br.com.luizalabs.orderfileconverter.domain.service
 
 import br.com.luizalabs.orderfileconverter.domain.enums.Order
-import br.com.luizalabs.orderfileconverter.infra.exception.UnprocessableEntityException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.io.InputStreamReader
+import org.springframework.web.multipart.MultipartFile
 import java.math.BigDecimal
 import java.text.SimpleDateFormat
 
 @Service
-class ConvertOrderFileLineToOrderService {
+class ConvertOrderFileToOrderService {
 
     @Autowired
     lateinit var orderFileLineValidatorService: OrderFileLineValidatorService
 
-    operator fun invoke (input: InputStreamReader): MutableMap<Int, MutableList<Order>> {
+    operator fun invoke (input: MultipartFile): MutableMap<Int, MutableList<Order>> {
         val ordersGrouped = mutableMapOf<Int, MutableList<Order>>()
 
-        input.forEachLine { line ->
+        input.inputStream.reader().forEachLine { line ->
             orderFileLineValidatorService.validate(line)
 
             val order = Order(

@@ -3,7 +3,7 @@ package br.com.luizalabs.orderfileconverter.application.usecases
 import br.com.luizalabs.orderfileconverter.domain.enums.ConversionStatus
 import br.com.luizalabs.orderfileconverter.domain.enums.FileType
 import br.com.luizalabs.orderfileconverter.domain.enums.Order
-import br.com.luizalabs.orderfileconverter.domain.service.ConvertOrderFileLineToOrderService
+import br.com.luizalabs.orderfileconverter.domain.service.ConvertOrderFileToOrderService
 import br.com.luizalabs.orderfileconverter.domain.service.GenerateSHA256HashService
 import br.com.luizalabs.orderfileconverter.infra.entities.OrderFileLog
 import br.com.luizalabs.orderfileconverter.infra.repositories.OrderFileLogRepository
@@ -19,7 +19,7 @@ class OrderFileConverterUseCase {
     private val logger = LoggerFactory.getLogger(OrderFileConverterUseCase::class.java)
 
     @Autowired
-    lateinit var convertOrderFileLineToOrderService: ConvertOrderFileLineToOrderService
+    lateinit var convertOrderFileToOrderService: ConvertOrderFileToOrderService
 
     @Autowired
     lateinit var generateSHA256HashService: GenerateSHA256HashService
@@ -29,15 +29,12 @@ class OrderFileConverterUseCase {
 
     operator fun invoke(orderFile: MultipartFile, userName: String): MutableMap<Int, MutableList<Order>> {
 
-        val input = orderFile.inputStream.reader()
-
         lateinit var ordersGrouped: MutableMap<Int, MutableList<Order>>
         lateinit var  conversionStatus: ConversionStatus
         var fileHash: String? = null
 
-
         try{
-            ordersGrouped = convertOrderFileLineToOrderService(input)
+            ordersGrouped = convertOrderFileToOrderService(orderFile)
             fileHash = generateSHA256HashService(orderFile)
             conversionStatus = ConversionStatus.CONVERTED
         }catch (e: Exception){
