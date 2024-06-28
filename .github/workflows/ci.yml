@@ -25,12 +25,24 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      - name: Archive test report
-        if: always()
-        uses: actions/upload-artifact@v2
+  coverage:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v2
         with:
-          name: test-report
-          path: build/reports/tests/test/
+          java-version: '21'
+          distribution: 'zulu'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Verify coverage with Gradle
+        run: ./gradlew jacocoTestCoverageVerification
 
   test:
     needs: build
@@ -83,26 +95,6 @@ jobs:
         with:
           name: test-report
           path: build/reports/jacoco/test/html/
-
-
-  coverage:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up JDK 21
-        uses: actions/setup-java@v2
-        with:
-          java-version: '21'
-          distribution: 'zulu'
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      - name: Test with Gradle
-        run: ./gradlew jacocoTestCoverageVerification
 
   docker:
     needs: [ build, test ]
