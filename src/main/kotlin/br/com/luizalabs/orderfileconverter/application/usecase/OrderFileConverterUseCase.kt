@@ -1,4 +1,4 @@
-package br.com.luizalabs.orderfileconverter.application.usecases
+package br.com.luizalabs.orderfileconverter.application.usecase
 
 import br.com.luizalabs.orderfileconverter.domain.enums.ConversionStatus
 import br.com.luizalabs.orderfileconverter.domain.enums.FileType
